@@ -1,0 +1,18 @@
+current directory: /Users/apple/Desktop/MyRentalApp/vendor/bundle/ruby/3.3.0/gems/nkf-0.2.0/ext/nkf
+/Users/apple/.rvm/rubies/ruby-3.3.5/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/apple/Desktop/MyRentalApp/vendor/bundle/ruby/3.3.0/gems/nkf-0.2.0/ext/nkf
+make DESTDIR\= sitearchdir\=./.gem.20240919-10575-bbtkzn sitelibdir\=./.gem.20240919-10575-bbtkzn clean
+
+current directory: /Users/apple/Desktop/MyRentalApp/vendor/bundle/ruby/3.3.0/gems/nkf-0.2.0/ext/nkf
+make DESTDIR\= sitearchdir\=./.gem.20240919-10575-bbtkzn sitelibdir\=./.gem.20240919-10575-bbtkzn
+compiling nkf.c
+linking shared-object nkf.bundle
+
+current directory: /Users/apple/Desktop/MyRentalApp/vendor/bundle/ruby/3.3.0/gems/nkf-0.2.0/ext/nkf
+make DESTDIR\= sitearchdir\=./.gem.20240919-10575-bbtkzn sitelibdir\=./.gem.20240919-10575-bbtkzn install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 nkf.bundle ./.gem.20240919-10575-bbtkzn
+
+current directory: /Users/apple/Desktop/MyRentalApp/vendor/bundle/ruby/3.3.0/gems/nkf-0.2.0/ext/nkf
+make DESTDIR\= sitearchdir\=./.gem.20240919-10575-bbtkzn sitelibdir\=./.gem.20240919-10575-bbtkzn clean

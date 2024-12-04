@@ -1,0 +1,6 @@
+framework module Pods_MyRentalApp_MyRentalAppTests {
+  umbrella header "Pods-MyRentalApp-MyRentalAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

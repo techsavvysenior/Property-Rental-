@@ -1,0 +1,72 @@
+# Set the platform and minimum iOS version
+platform :ios, '13.4'  # Replace '12.0' with your desired minimum iOS version
+
+# Use static frameworks with use_frameworks! and linkage
+use_frameworks! :linkage => :static
+# $RNFirebaseAsStaticFramework = true
+
+# Resolve react_native_pods.rb with node to allow for hoisting
+require Pod::Executable.execute_command('node', ['-p',
+  'require.resolve(
+    "react-native/scripts/react_native_pods.rb",
+    {paths: [process.argv[1]]},
+  )', __dir__]).strip
+
+prepare_react_native_project!
+
+# Dynamically configure use_frameworks based on environment variable
+linkage = ENV['USE_FRAMEWORKS']
+if linkage != nil
+  Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
+  use_frameworks! :linkage => linkage.to_sym
+end
+
+# Define the main target for the project
+target 'MyRentalApp' do
+  config = use_native_modules!
+
+  # Use React Native helper for pod installations
+  use_react_native!(
+    :path => config[:reactNativePath],
+    # An absolute path to your application root.
+    :app_path => "#{Pod::Config.instance.installation_root}/.."
+  )
+
+  # Add Firebase dependencies with modular headers
+  pod 'GoogleUtilities', :modular_headers => true
+  # pod 'FirebaseCore', :modular_headers => true
+  pod 'FirebaseFirestore', :modular_headers => true
+  pod 'FirebaseCoreExtension', :modular_headers => true
+  pod 'FirebaseFirestoreInternal', :modular_headers => true
+  rn_maps_path = '../node_modules/react-native-maps'
+  pod 'react-native-google-maps', :path => rn_maps_path
+  # Define the test target for the project
+  target 'MyRentalAppTests' do
+    inherit! :complete
+    # Pods for testing
+  end
+
+  # Post install hook to ensure React Native installation is complete
+  post_install do |installer|
+    # Custom post install script for React Native projects
+    react_native_post_install(
+      installer,
+      config[:reactNativePath],
+      :mac_catalyst_enabled => false, # Mac Catalyst disabled
+      # :ccache_enabled => true  # Uncomment to enable ccache if needed
+    )
+
+    # Post install hook to modify BoringSSL-GRPC
+    installer.pods_project.targets.each do |target|
+      if target.name == 'BoringSSL-GRPC'
+        target.source_build_phase.files.each do |file|
+          if file.settings && file.settings['COMPILER_FLAGS']
+            flags = file.settings['COMPILER_FLAGS'].split
+            flags.reject! { |flag| flag == '-GCC_WARN_INHIBIT_ALL_WARNINGS' }
+            file.settings['COMPILER_FLAGS'] = flags.join(' ')
+          end
+        end
+      end
+    end
+  end
+end

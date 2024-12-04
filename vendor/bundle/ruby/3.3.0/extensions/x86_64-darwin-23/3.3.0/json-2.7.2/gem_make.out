@@ -1,0 +1,16 @@
+current directory: /Users/apple/Desktop/MyRentalApp/vendor/bundle/ruby/3.3.0/gems/json-2.7.2/ext/json
+/Users/apple/.rvm/rubies/ruby-3.3.5/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/apple/Desktop/MyRentalApp/vendor/bundle/ruby/3.3.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240919-10575-lblc6d sitelibdir\=./.gem.20240919-10575-lblc6d clean
+
+current directory: /Users/apple/Desktop/MyRentalApp/vendor/bundle/ruby/3.3.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240919-10575-lblc6d sitelibdir\=./.gem.20240919-10575-lblc6d
+make: Nothing to be done for `all'.
+
+current directory: /Users/apple/Desktop/MyRentalApp/vendor/bundle/ruby/3.3.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240919-10575-lblc6d sitelibdir\=./.gem.20240919-10575-lblc6d install
+
+current directory: /Users/apple/Desktop/MyRentalApp/vendor/bundle/ruby/3.3.0/gems/json-2.7.2/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20240919-10575-lblc6d sitelibdir\=./.gem.20240919-10575-lblc6d clean
